@@ -12,11 +12,14 @@ class FullscreenVideoPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
         customVideoPlayerController.setFullscreen(false);
-        return false;
       },
+      // onWillPop: () async {
+      //   customVideoPlayerController.setFullscreen(false);
+      //   return false;
+      // },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
