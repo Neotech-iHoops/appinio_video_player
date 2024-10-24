@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-export 'package:cached_video_player_plus/cached_video_player_plus.dart';
+// export 'package:cached_video_player_plus/cached_video_player_plus.dart';
 
 /// The extension on the class is able to call private methods
 /// only the package can use these methods and not the public beacuse of the hide keyword in the package exports
@@ -29,9 +29,9 @@ class CustomVideoPlayerController {
   double _lastVolume = 0.5;
   Duration get getPosition => videoPlayerController.value.position;
   final BuildContext context;
-  CachedVideoPlayerPlusController videoPlayerController;
+  VideoPlayerController videoPlayerController;
   final CustomVideoPlayerSettings customVideoPlayerSettings;
-  final Map<String, CachedVideoPlayerPlusController>? additionalVideoSources;
+  final Map<String, VideoPlayerController>? additionalVideoSources;
   final ValueNotifier<bool> areControlsVisible = ValueNotifier<bool>(true);
 
   Future<void> switchSource(String sourceKey) async {
@@ -136,7 +136,7 @@ class CustomVideoPlayerController {
   }
 
   Future<void> _switchVideoSource(String selectedSource) async {
-    CachedVideoPlayerPlusController? newSource = additionalVideoSources![selectedSource];
+    VideoPlayerController? newSource = additionalVideoSources![selectedSource];
     if (newSource != null) {
       Duration _playedDuration = videoPlayerController.value.position;
       double _playbackSpeed = videoPlayerController.value.playbackSpeed;
@@ -242,7 +242,7 @@ class CustomVideoPlayerController {
     videoPlayerController.dispose();
     if (additionalVideoSources != null) {
       if (additionalVideoSources!.isNotEmpty) {
-        for (MapEntry<String, CachedVideoPlayerPlusController> videoSource in additionalVideoSources!.entries) {
+        for (MapEntry<String, VideoPlayerController> videoSource in additionalVideoSources!.entries) {
           videoSource.value.dispose();
         }
       }

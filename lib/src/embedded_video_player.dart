@@ -1,3 +1,4 @@
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:appinio_video_player/src/controls/all_controls_overlay.dart';
 import 'package:appinio_video_player/src/custom_video_player_controller.dart';
 import 'package:appinio_video_player/src/seek_buttons.dart';
@@ -46,7 +47,7 @@ class _EmbeddedVideoPlayerState extends State<EmbeddedVideoPlayer> {
               child: AspectRatio(
                 aspectRatio: widget.customVideoPlayerController.videoPlayerController.value.aspectRatio,
                 child: IgnorePointer(
-                  child: CachedVideoPlayerPlus(
+                  child: VideoPlayer(
                     widget.customVideoPlayerController.videoPlayerController,
                   ),
                 ),

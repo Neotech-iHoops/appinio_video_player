@@ -1,6 +1,7 @@
 import 'package:appinio_video_player/src/controls/video_settings_popup/video_settings_dialog_item.dart';
 import 'package:appinio_video_player/src/custom_video_player_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoSettingsQualityDialog extends StatefulWidget {
   final CustomVideoPlayerController customVideoPlayerController;
@@ -49,7 +50,7 @@ class _VideoSettingsQualityDialogState extends State<VideoSettingsQualityDialog>
                 padding: const EdgeInsets.all(0),
                 shrinkWrap: true,
                 children: [
-                  for (MapEntry<String, CachedVideoPlayerPlusController> videoSource
+                  for (MapEntry<String, VideoPlayerController> videoSource
                       in widget.customVideoPlayerController.additionalVideoSources!.entries)
                     VideoSettingsDialogItem(
                       title: videoSource.key,

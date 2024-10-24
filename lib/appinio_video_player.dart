@@ -1,6 +1,7 @@
 library appinio_video_player;
 
-export 'package:cached_video_player_plus/cached_video_player_plus.dart';
+// export 'package:cached_video_player_plus/cached_video_player_plus.dart';
+export 'package:video_player/video_player.dart';
 
 export 'src/custom_video_player.dart';
 export 'src/custom_video_player_controller.dart' hide ProtectedCustomVideoPlayerController;
