@@ -1,4 +1,4 @@
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
