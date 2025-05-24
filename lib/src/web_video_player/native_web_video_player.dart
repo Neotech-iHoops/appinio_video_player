@@ -1,8 +1,8 @@
+import 'dart:ui' as ui;
+
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
-import 'dart:ui' as ui;
+import 'package:web/web.dart';
 
 class NativeWebVideoPlayer extends StatefulWidget {
   final CustomVideoPlayerWebController customVideoPlayerWebController;
@@ -16,7 +16,7 @@ class NativeWebVideoPlayer extends StatefulWidget {
 }
 
 class _NativeWebVideoPlayerState extends State<NativeWebVideoPlayer> {
-  final html.VideoElement _video = html.VideoElement();
+  final HTMLVideoElement _video = HTMLVideoElement();
   late CustomVideoPlayerWebSettings _videoPlayerSettings;
   num _videoPosition = 0;
 
@@ -59,20 +59,21 @@ class _NativeWebVideoPlayerState extends State<NativeWebVideoPlayer> {
       _video.setAttribute(
         'disablePictureInPicture',
         widget.customVideoPlayerWebController.webVideoPlayerSettings
-            .disablePictureInPicture,
+            .disablePictureInPicture
+            .toString(),
       );
       if (_videoPlayerSettings.hideDownloadButton) {
         _video.setAttribute('controlsList', 'nodownload');
       }
 
       if (_videoPlayerSettings.backgroundColor != null) {
-        _video.style.backgroundColor = _videoPlayerSettings.backgroundColor;
+        _video.style.backgroundColor = _videoPlayerSettings.backgroundColor!;
       }
 
       _video.style.width = '100%';
       _video.style.height = '100%';
       _video.style.border = 'none';
-      _video.setAttribute('playsInline', true);
+      _video.setAttribute('playsInline', 'true');
 
       // listeners
       _video.onTimeUpdate.listen((event) {
@@ -83,7 +84,7 @@ class _NativeWebVideoPlayerState extends State<NativeWebVideoPlayer> {
 
       _video.onEnded.listen((event) {
         if (_videoPlayerSettings.exitFullscreenOnEnd) {
-          _video.exitFullscreen();
+          document.exitFullscreen();
         }
       });
 
@@ -134,9 +135,9 @@ class _NativeWebVideoPlayerState extends State<NativeWebVideoPlayer> {
 
   void _setFullscreen(bool fullscreen) {
     if (fullscreen) {
-      _video.enterFullscreen();
+      _video.requestFullscreen();
     } else {
-      _video.exitFullscreen();
+      document.exitFullscreen();
     }
   }
 
