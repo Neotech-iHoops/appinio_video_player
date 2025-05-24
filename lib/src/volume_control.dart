@@ -7,9 +7,9 @@ class VolumeControls extends StatefulWidget {
   final CustomVideoPlayerController customVideoPlayerController;
 
   const VolumeControls({
-    Key? key,
+    super.key,
     required this.customVideoPlayerController,
-  }) : super(key: key);
+  });
 
   @override
   State<VolumeControls> createState() => _VolumeControlsState();
@@ -71,8 +71,8 @@ class _VolumeControlsState extends State<VolumeControls> {
 
   void onPanUpdate(DragUpdateDetails dragUpdateDetails) {
     double maxSpeedThreshold = 100.0;
-    final RenderBox? _renderBoxRed = _globalKey.currentContext?.findRenderObject() as RenderBox;
-    final double? height = _renderBoxRed?.size.height;
+    final RenderBox renderBoxRed = _globalKey.currentContext?.findRenderObject() as RenderBox;
+    final double? height = renderBoxRed?.size.height;
     final double volume = widget.customVideoPlayerController.videoPlayerController.value.volume;
     double factor = 0.03;
     double dx = dragUpdateDetails.primaryDelta!; // Change in x direction
@@ -101,10 +101,10 @@ class SlideController extends StatefulWidget {
   final GlobalKey widgetKey;
 
   const SlideController({
-    Key? key,
+    super.key,
     required this.child,
     required this.widgetKey,
-  }) : super(key: key);
+  });
 
   @override
   State<SlideController> createState() => _SlideControllerState();

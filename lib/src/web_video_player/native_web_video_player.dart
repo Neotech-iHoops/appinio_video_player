@@ -50,7 +50,7 @@ class _NativeWebVideoPlayerState extends State<NativeWebVideoPlayer> {
     ui.platformViewRegistry.registerViewFactory(_videoPlayerSettings.src,
         (int viewId) {
       _video.src =
-          _videoPlayerSettings.src + '#t=${_videoPlayerSettings.startAt}';
+          '${_videoPlayerSettings.src}#t=${_videoPlayerSettings.startAt}';
       _video.autoplay = _videoPlayerSettings.autoplay;
       _video.controls = _videoPlayerSettings.enableControls;
       if (_videoPlayerSettings.thumbnailPath != null) {

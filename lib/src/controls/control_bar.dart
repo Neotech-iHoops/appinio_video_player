@@ -11,11 +11,11 @@ class CustomVideoPlayerControlBar extends StatelessWidget {
   final Function updateVideoState;
   final Function fadeOutOnPlay;
   const CustomVideoPlayerControlBar({
-    Key? key,
+    super.key,
     required this.customVideoPlayerController,
     required this.updateVideoState,
     required this.fadeOutOnPlay,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +75,9 @@ class CustomVideoPlayerControlBar extends StatelessWidget {
                     customVideoPlayerController.videoProgressNotifier,
                 builder: ((context, progress, child) {
                   return Text(
-                    "-" +
-                        getDurationAsString(customVideoPlayerController
+                    "-${getDurationAsString(customVideoPlayerController
                                 .videoPlayerController.value.duration -
-                            progress),
+                            progress)}",
                     style: customVideoPlayerController
                         .customVideoPlayerSettings.durationRemainingTextStyle,
                   );

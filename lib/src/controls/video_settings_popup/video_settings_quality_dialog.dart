@@ -7,10 +7,10 @@ class VideoSettingsQualityDialog extends StatefulWidget {
   final CustomVideoPlayerController customVideoPlayerController;
   final Function updateView;
   const VideoSettingsQualityDialog({
-    Key? key,
+    super.key,
     required this.customVideoPlayerController,
     required this.updateView,
-  }) : super(key: key);
+  });
 
   @override
   State<VideoSettingsQualityDialog> createState() => _VideoSettingsQualityDialogState();

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class CustomVideoPlayerWeb extends StatelessWidget {
   final CustomVideoPlayerWebController customVideoPlayerWebController;
   const CustomVideoPlayerWeb({
-    Key? key,
+    super.key,
     required this.customVideoPlayerWebController,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

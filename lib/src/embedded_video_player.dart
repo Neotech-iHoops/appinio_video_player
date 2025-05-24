@@ -11,10 +11,10 @@ class EmbeddedVideoPlayer extends StatefulWidget {
   final bool isFullscreen;
 
   const EmbeddedVideoPlayer({
-    Key? key,
+    super.key,
     required this.customVideoPlayerController,
     this.isFullscreen = false,
-  }) : super(key: key);
+  });
 
   @override
   State<EmbeddedVideoPlayer> createState() => _EmbeddedVideoPlayerState();

@@ -6,9 +6,9 @@ class FullscreenVideoPlayer extends StatelessWidget {
   final CustomVideoPlayerController customVideoPlayerController;
 
   const FullscreenVideoPlayer({
-    Key? key,
+    super.key,
     required this.customVideoPlayerController,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

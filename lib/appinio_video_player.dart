@@ -1,4 +1,4 @@
-library appinio_video_player;
+library;
 
 // export 'package:cached_video_player_plus/cached_video_player_plus.dart';
 export 'package:video_player/video_player.dart';

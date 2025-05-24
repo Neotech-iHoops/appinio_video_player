@@ -138,9 +138,9 @@ class CustomVideoPlayerController {
   Future<void> _switchVideoSource(String selectedSource) async {
     VideoPlayerController? newSource = additionalVideoSources![selectedSource];
     if (newSource != null) {
-      Duration _playedDuration = videoPlayerController.value.position;
-      double _playbackSpeed = videoPlayerController.value.playbackSpeed;
-      bool _wasPlaying = videoPlayerController.value.isPlaying;
+      Duration playedDuration = videoPlayerController.value.position;
+      double playbackSpeed = videoPlayerController.value.playbackSpeed;
+      bool wasPlaying = videoPlayerController.value.isPlaying;
       videoPlayerController.pause();
       videoPlayerController.removeListener(_videoListeners);
       videoPlayerController = newSource;
@@ -149,14 +149,14 @@ class CustomVideoPlayerController {
       if (isFullscreen) {
         _setOrientationForVideo(); // if video changed completely
       }
-      await videoPlayerController.seekTo(_playedDuration);
+      await videoPlayerController.seekTo(playedDuration);
       if (Theme.of(context).platform != TargetPlatform.iOS) {
-        await videoPlayerController.setPlaybackSpeed(_playbackSpeed);
+        await videoPlayerController.setPlaybackSpeed(playbackSpeed);
       } else {
         await videoPlayerController
             .setPlaybackSpeed(1); // resetting to 1 because its not working on iOS. open issue on github
       }
-      if (_wasPlaying) {
+      if (wasPlaying) {
         await videoPlayerController.play();
       }
       _updateViewAfterFullscreen?.call();

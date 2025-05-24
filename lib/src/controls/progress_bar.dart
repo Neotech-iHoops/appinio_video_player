@@ -8,9 +8,9 @@ class CustomVideoPlayerProgressBar extends StatefulWidget {
   final CustomVideoPlayerController customVideoPlayerController;
 
   const CustomVideoPlayerProgressBar({
-    Key? key,
+    super.key,
     required this.customVideoPlayerController,
-  }) : super(key: key);
+  });
 
   @override
   _VideoProgressIndicatorState createState() => _VideoProgressIndicatorState();
@@ -101,8 +101,8 @@ class _VideoProgressIndicatorState extends State<CustomVideoPlayerProgressBar> {
       if (widget
           .customVideoPlayerController.customVideoPlayerSettings.customVideoPlayerProgressBarSettings.allowScrubbing) {
         return CustomVideoPlayerSeeker(
-          child: paddedProgressIndicator,
           customvVideoPlayerController: widget.customVideoPlayerController,
+          child: paddedProgressIndicator,
         );
       } else {
         return paddedProgressIndicator;
